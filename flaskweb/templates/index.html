@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>게시판</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>게시판</h1>
+    <a href="{{ url_for('bp.create') }}">글쓰기</a>
+    <ul>
+        {% for post in posts %}
+            <li>
+                <a href="{{ url_for('bp.view', post_id=post.id) }}">{{ post.title }}</a>
+                ({{ post.created_at }})
+            </li>
+        {% else %}
+            <li>게시글이 없습니다.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
